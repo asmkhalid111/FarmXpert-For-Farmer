@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AgriTech Platform</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      /* Base Styles */
+      :root {
+        --primary-color: #2c5e1e;
+        --secondary-color: #4a9e3a;
+        --accent-color: #ffc107;
+        --text-color: #333333;
+        --background-color: #f5f5f5;
+        --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        --transition-speed: 0.3s;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background-color: var(--background-color);
+        color: var(--text-color);
+        line-height: 1.6;
+        padding-bottom: 70px;
+      }
+
+      /* Header & Navigation */
+      .header {
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        color: white;
+        padding: 1.2rem;
+        text-align: center;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: var(--card-shadow);
+      }
+
+      .nav-bar {
+        background-color: white;
+        padding: 0.8rem;
+        display: flex;
+        justify-content: space-around;
+        box-shadow: var(--card-shadow);
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 99;
+      }
+
+      .nav-item {
+        text-align: center;
+        color: var(--primary-color);
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: transform var(--transition-speed);
+        padding: 0.5rem;
+        border-radius: 8px;
+      }
+
+      .nav-item.active {
+        color: var(--secondary-color);
+        background-color: rgba(44, 94, 30, 0.1);
+      }
+
+      .nav-item:hover {
+        transform: translateY(-2px);
+        background-color: rgba(44, 94, 30, 0.1);
+      }
+
+      .nav-item i {
+        font-size: 1.6rem;
+        margin-bottom: 0.3rem;
+      }
+
+      /* Common Components */
+      .main-content {
+        padding: 1.5rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .card {
+        background: white;
+        border-radius: 12px;
+        padding: 1.2rem;
+        margin-bottom: 1.5rem;
+        box-shadow: var(--card-shadow);
+        transition: transform var(--transition-speed);
+      }
+
+      .section-title {
+        margin: 1.5rem 0;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--primary-color);
+      }
+
+      .btn {
+        padding: 0.8rem 1.2rem;
+        border: none;
+        border-radius: 8px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all var(--transition-speed);
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        justify-content: center;
+      }
+
+      .btn-primary {
+        background-color: var(--primary-color);
+        color: white;
+      }
+
+      .btn-secondary {
+        background-color: #e9ecef;
+        color: var(--primary-color);
+      }
+
+      /* Grid Layouts */
+      .grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+      }
+
+      /* Marketplace Specific */
+      .product-card {
+        background: white;
+        border-radius: 12px;
+        padding: 1rem;
+        text-align: center;
+      }
+
+      .product-card img {
+        width: 100%;
+        height: 160px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+      }
+
+      .price {
+        color: var(--primary-color);
+        font-weight: bold;
+        font-size: 1.2rem;
+        margin: 0.8rem 0;
+      }
+
+      /* Training Specific */
+      .course-card {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .progress-bar {
+        background: #e9ecef;
+        border-radius: 4px;
+        height: 8px;
+        overflow: hidden;
+      }
+
+      .progress {
+        background: var(--primary-color);
+        height: 100%;
+        transition: width 0.3s ease;
+      }
+
+      /* Profile Specific */
+      .profile-header {
+        text-align: center;
+        padding: 2rem;
+      }
+
+      .profile-pic {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        margin: 0 auto 1rem;
+        background: #e9ecef;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+        color: var(--primary-color);
+      }
+
+      /* Crops Specific */
+      .crop-card {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+      }
+
+      .crop-icon {
+        font-size: 2rem;
+        color: var(--primary-color);
+      }
+
+      .crop-details {
+        flex: 1;
+      }
+
+      /* Search Bar */
+      .search-bar {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .search-input {
+        flex: 1;
+        padding: 0.8rem;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 1rem;
+      }
+
+      /* Filters */
+      .filter-chips {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .chip {
+        padding: 0.5rem 1rem;
+        background: white;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        cursor: pointer;
+        border: 1px solid #ddd;
+      }
+
+      .chip.active {
+        background: var(--primary-color);
+        color: white;
+        border-color: var(--primary-color);
+      }
+
+      @media (max-width: 768px) {
+        .nav-bar {
+          padding: 0.5rem;
+        }
+
+        .nav-item {
+          font-size: 0.8rem;
+        }
+
+        .nav-item i {
+          font-size: 1.4rem;
+        }
+
+        .main-content {
+          padding: 1rem;
+        }
+
+        .grid-container {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Market Page -->
+    <div class="page" id="market-page">
+      <div class="header">
+        <h1>Marketplace</h1>
+      </div>
+
+      <div class="main-content">
+        <div class="search-bar">
+          <input type="text" class="search-input" placeholder="Search products...">
+          <button class="btn btn-primary"><i class="fas fa-filter"></i></button>
+        </div>
+
+        <div class="filter-chips">
+          <div class="chip active">All</div>
+          <div class="chip">Seeds</div>
+          <div class="chip">Fertilizers</div>
+          <div class="chip">Equipment</div>
+          <div class="chip">Pesticides</div>
+        </div>
+
+        <div class="grid-container">
+          <div class="product-card card">
+            <img src="/api/placeholder/400/320" alt="Premium Seeds" />
+            <h4>Premium Wheat Seeds</h4>
+            <div class="price">₹29.99/kg</div>
+            <p>High-yield variety | 99% germination</p>
+            <button class="btn btn-primary"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+          </div>
+
+          <div class="product-card card">
+            <img src="/api/placeholder/400/320" alt="Organic Fertilizer" />
+            <h4>Organic Fertilizer</h4>
+            <div class="price">₹19.99/kg</div>
+            <p>NPKS enriched | 100% organic</p>
+            <button class="btn btn-primary"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+          </div>
+
+          <div class="product-card card">
+            <img src="/api/placeholder/400/320" alt="Sprinkler" />
+            <h4>Automatic Sprinkler</h4>
+            <div class="price">₹599.99</div>
+            <p>360° coverage | Timer included</p>
+            <button class="btn btn-primary"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Crops Page -->
+    <div class="page" id="crops-page" style="display: none;">
+      <div class="header">
+        <h1>My Crops</h1>
+      </div>
+
+      <div class="main-content">
+        <button class="btn btn-primary" style="margin-bottom: 1.5rem;">
+          <i class="fas fa-plus"></i> Add New Crop
+        </button>
+
+        <div class="card crop-card">
+          <div class="crop-icon">
+            <i class="fas fa-seedling"></i>
+          </div>
+          <div class="crop-details">
+            <h3>Wheat - Field A</h3>
+            <p>Planted: Oct 15, 2023</p>
+            <div class="progress-bar">
+              <div class="progress" style="width: 75%;"></div>
+            </div>
+            <small>75% to harvest</small>
+          </div>
+        </div>
+
+        <div class="card crop-card">
+          <div class="crop-icon">
+            <i class="fas fa-seedling"></i>
+          </div>
+          <div class="crop-details">
+            <h3>Rice - Field B</h3>
+            <p>Planted: Nov 1, 2023</p>
+            <div class="progress-bar">
+              <div class="progress" style="width: 45%;"></div>
+            </div>
+            <small>45% to harvest</small>
+          </div>
+        </div>
+
+        <div class="section-title">
+          <i class="fas fa-chart-line"></i> Crop Analytics
+        </div>
+
+        <div class="grid-container">
+          <div class="card">
+            <h4>Yield Forecast</h4>
+            <p>Expected yield: 2.5 tons/acre</p>
+            <p>Above average by 15%</p>
+          </div>
+          <div class="card">
+            <h4>Health Status</h4>
+            <p>All crops healthy</p>
+            <p>Last inspection: 2 days ago</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Training Page -->
+    <div class="page" id="training-page" style="display: none;">
+      <div class="header">
+        <h1>Training & Resources</h1>
+      </div>
+
+      <div class="main-content">
+        <div class="search-bar">
+          <input type="text" class="search-input" placeholder="Search courses...">
+        </div>
+
+        <div class="filter-chips">
+          <div class="chip active">All</div>
+          <div class="chip">Beginner</div>
+          <div class="chip">Advanced</div>
+          <div class="chip">Certification</div>
+        </div>
+
+        <div class="grid-container">
+          <div class="card course-card">
+            <img src="/api/placeholder/400/320" alt="Course" />
+            <h4>Modern Farming Techniques</h4>
+            <p>Learn about sustainable farming practices</p>
+            <div class="progress-bar">
+              <div class="progress" style="width: 60%;"></div>
+            </div>
+            <small>60% Complete</small>
+            <button class="btn btn-primary">Continue Learning</button>
+          </div>
+
+          <div class="card course-card">
+            <img src="/api/placeholder/400/320" alt="Course" />
+            <h4>Organic Farming Certification</h4>
+            <p>Get certified in organic farming</p>
+            <div class="progress-bar">
+              <div class="progress" style="width: 0%;"></div>
+            </div>
+            <small>Not Started</small>
+            <button class="btn btn-primary">Start Course</button>
+          </div>
+
+          <div class="card course-card">
+            <img src="/api/placeholder/400/320" alt="Course" />
+            <h4>Pest Management</h4>
+            <p>Learn to protect your crops naturally</p>
+            <div class="progress-bar">
+              <div class="progress" style="width: 100%;"></div>
+            </div>
+            <small>Completed</small>
+            <button class="btn btn-secondary">Review Course</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Profile Page -->
+    <div class="page" id="profile-page" style="display: none;">
+      <div class="header">
+        <h1>My Profile</h1>
+      </div>
+
+      <div class="main-content">
+        <div class="card profile-header">
+          <div class="profile-pic">
+            <i class="fas fa-user"></i>
+          </div>
+          <h2>John Smith</h2>
+          <p>Organic Farmer • Member since 2023</p>
+        </div>
+
+        <div class="grid-container">
+          <div class="card">
+            <h4><i class="fas fa-medal"></i> Achievements</h4>
+            <p>Certified Organic Farmer</p>
+            <p>5 Successful Harvests</p>
+            <p>Top Seller - March 2024</p>
+            <p>Best Farmer Award 2022</p>
+          </div>
+          <div class="card">
+            <h4><i class="fas fa-book"></i> Courses Completed</h4>
+            <ul>
+              <li>Organic Farming Basics</li>
+              <li>Advanced Soil Management</li>
+              <li>Sustainable Agriculture Practices</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4><i class="fas fa-envelope"></i> Contact Information</h4>
+            <p>Email: john.smith@example.com</p>
+            <p>Phone: (123) 456-7890</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Scripts -->
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <script src="scripts.js"></script>
+</body>
+</html>
