@@ -1,0 +1,370 @@
+<!-- Its the home page -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FarmXpert</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary-color: #2c5e1e;
+        --secondary-color: #4a9e3a;
+        --accent-color: #ffc107;
+        --text-color: #333333;
+        --background-color: #f5f5f5;
+        --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        --transition-speed: 0.3s;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background-color: var(--background-color);
+        color: var(--text-color);
+        line-height: 1.6;
+      }
+
+      .header {
+        background: linear-gradient(
+          135deg,
+          var(--primary-color),
+          var(--secondary-color)
+        );
+        color: white;
+        padding: 1.2rem;
+        text-align: center;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: var(--card-shadow);
+      }
+
+      .nav-bar {
+        background-color: white;
+        padding: 0.8rem;
+        display: flex;
+        justify-content: space-around;
+        box-shadow: var(--card-shadow);
+        position: sticky;
+        top: 60px;
+        z-index: 99;
+      }
+
+      .nav-item {
+        text-align: center;
+        color: var(--primary-color);
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: transform var(--transition-speed);
+        padding: 0.5rem;
+        border-radius: 8px;
+      }
+
+      .nav-item:hover {
+        transform: translateY(-2px);
+        background-color: rgba(44, 94, 30, 0.1);
+      }
+
+      .nav-item i {
+        font-size: 1.6rem;
+        margin-bottom: 0.3rem;
+      }
+
+      .main-content {
+        padding: 1.5rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .card {
+        background: white;
+        border-radius: 12px;
+        padding: 1.2rem;
+        margin-bottom: 1.5rem;
+        box-shadow: var(--card-shadow);
+        transition: transform var(--transition-speed);
+      }
+
+      .card:hover {
+        transform: translateY(-2px);
+      }
+
+      .weather-card {
+        background: linear-gradient(135deg, #1e90ff, #4169e1);
+        color: white;
+      }
+
+      .weather-card h3 {
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .stats-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        margin: 1.5rem 0;
+      }
+
+      .stat-card {
+        background: white;
+        padding: 1.2rem;
+        border-radius: 12px;
+        text-align: center;
+        transition: transform var(--transition-speed);
+        box-shadow: var(--card-shadow);
+      }
+
+      .stat-card:hover {
+        transform: translateY(-2px);
+      }
+
+      .stat-value {
+        font-size: 2rem;
+        font-weight: bold;
+        color: var(--primary-color);
+        margin-bottom: 0.5rem;
+      }
+
+      .alerts {
+        background: #fff3cd;
+        border-left: 4px solid var(--accent-color);
+        padding: 1rem;
+        margin: 1.5rem 0;
+        border-radius: 0 8px 8px 0;
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.02);
+        }
+        100% {
+          transform: scale(1);z
+        }
+      }
+
+      .marketplace-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin-top: 1rem;
+      }
+
+      .product-card {
+        background: white;
+        border-radius: 12px;
+        padding: 1rem;
+        text-align: center;
+        transition: transform var(--transition-speed);
+        box-shadow: var(--card-shadow);
+      }
+
+      .product-card:hover {
+        transform: translateY(-4px);
+      }
+
+      .product-card img {
+        width: 100%;
+        height: 160px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+      }
+
+      .price {
+        color: var(--primary-color);
+        font-weight: bold;
+        font-size: 1.2rem;
+        margin: 0.8rem 0;
+      }
+
+      .btn {
+        padding: 0.8rem 1.2rem;
+        border: none;
+        border-radius: 8px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all var(--transition-speed);
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        width: 100%;
+        justify-content: center;
+      }
+
+      .btn i {
+        font-size: 1.1rem;
+      }
+
+      .btn-primary {
+        background-color: var(--primary-color);
+        color: white;
+      }
+
+      .btn-primary:hover {
+        background-color: var(--secondary-color);
+        transform: translateY(-2px);
+      }
+
+      .btn-secondary {
+        background-color: #e9ecef;
+        color: var(--primary-color);
+      }
+
+      .btn-secondary:hover {
+        background-color: #dde2e6;
+        transform: translateY(-2px);
+      }
+
+      .action-buttons {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+
+      @media (max-width: 768px) {
+        .nav-bar {
+          padding: 0.5rem;
+          top: 52px;
+        }
+
+        .nav-item {
+          font-size: 0.8rem;
+        }
+
+        .nav-item i {
+          font-size: 1.4rem;
+        }
+
+        .main-content {
+          padding: 1rem;
+        }
+
+        .stat-value {
+          font-size: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>AgriTech Platform</h1>
+    </div>
+
+    <div class="nav-bar">
+      <a href="#" class="nav-item">
+        <i class="fas fa-home"></i><br />
+        Home
+      </a>
+      <a href="./marketpage.html" class="nav-item">
+        <i class="fas fa-store"></i><br />
+        Market
+      </a>
+      <a href="#" class="nav-item">
+        <i class="fas fa-seedling"></i><br />
+        Crops
+      </a>
+      <a href="./training.html" class="nav-item">
+        <i class="fas fa-book"></i><br />
+        Learn
+      </a>
+      <a href="./profile.html" class="nav-item">
+        <i class="fas fa-user"></i><br />
+        Profile
+      </a>
+    </div>
+
+    <div class="main-content">
+      <div class="card weather-card">
+        <h3><i class="fas fa-cloud-sun"></i> Weather Update</h3>
+        <p>Sunny • 25°C</p>
+        <p>Perfect day for crop inspection</p>
+        <p>
+          <i class="fas fa-tint"></i> Humidity: 65% •
+          <i class="fas fa-wind"></i> Wind: 12 km/h
+        </p>
+      </div>
+
+      <div class="stats-container">
+        <div class="stat-card">
+          <div class="stat-value">85%</div>
+          <div>Soil Moisture</div>
+          <small>Optimal Range: 60-90%</small>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">23°C</div>
+          <div>Temperature</div>
+          <small>Ideal for Growth</small>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">6.8</div>
+          <div>Soil pH</div>
+          <small>Slightly Acidic</small>
+        </div>
+      </div>
+
+      <div class="alerts">
+        <h3><i class="fas fa-bell"></i> Important Updates</h3>
+        <p>
+          <i class="fas fa-check-circle"></i> Time to apply fertilizer to Field
+          B
+        </p>
+        <p>
+          <i class="fas fa-exclamation-circle"></i> Weather alert: Light rain
+          expected tomorrow
+        </p>
+      </div>
+
+      <h3><i class="fas fa-store"></i> Marketplace</h3>
+      <div class="marketplace-grid">
+        <div class="product-card">
+          <img src="/api/placeholder/400/320" alt="Seeds" />
+          <h4>Premium Seeds</h4>
+          <div class="price">₹29.99</div>
+          <p>High-yield wheat variety</p>
+          <button class="btn btn-primary">
+            <i class="fas fa-shopping-cart"></i> Buy Now
+          </button>
+        </div>
+        <div class="product-card">
+          <img src="/api/placeholder/400/320" alt="Fertilizer" />
+          <h4>Organic Fertilizer</h4>
+          <div class="price">₹19.99</div>
+          <p>NPKS enriched formula</p>
+          <button class="btn btn-primary">
+            <i class="fas fa-shopping-cart"></i> Buy Now
+          </button>
+        </div>
+      </div>
+
+      <div class="action-buttons">
+        <button class="btn btn-primary">
+          <i class="fas fa-plus"></i> Add New Crop
+        </button>
+        <button class="btn btn-secondary">
+          <i class="fas fa-chart-line"></i> View Reports
+        </button>
+        <button class="btn btn-secondary">
+          <i class="fas fa-phone"></i> Contact Expert
+        </button>
+      </div>
+    </div>
+  </body>
+</html>
