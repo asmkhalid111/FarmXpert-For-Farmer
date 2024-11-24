@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Account - FarmXpert</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary-color: #2c5e1e;
+        --secondary-color: #4a9e3a;
+        --accent-color: #ffc107;
+        --text-color: #333333;
+        --background-color: #f5f5f5;
+        --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        --transition-speed: 0.3s;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background-color: var(--background-color);
+        color: var(--text-color);
+        line-height: 1.6;
+        padding-bottom: 80px;
+      }
+
+      .header {
+        background: linear-gradient(
+          135deg,
+          var(--primary-color),
+          var(--secondary-color)
+        );
+        color: white;
+        padding: 1.2rem;
+        text-align: center;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: var(--card-shadow);
+      }
+
+      .nav-bar {
+        background-color: white;
+        padding: 0.8rem 0.4rem;
+        display: flex;
+        justify-content: space-around;
+        box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 999;
+      }
+
+      .nav-item {
+        text-align: center;
+        color: var(--primary-color);
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: all var(--transition-speed);
+        padding: 0.5rem;
+        border-radius: 8px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.3rem;
+      }
+
+      .nav-item.active {
+        color: var(--secondary-color);
+        background-color: rgba(44, 94, 30, 0.1);
+      }
+
+      .nav-item:hover {
+        color: var(--secondary-color);
+        background-color: rgba(44, 94, 30, 0.1);
+      }
+
+      .nav-item i {
+        font-size: 1.4rem;
+      }
+
+      .main-content {
+        padding: 1.5rem;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .profile-header {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+
+      .profile-pic {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background-color: var(--secondary-color);
+        margin: 0 auto 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 3rem;
+      }
+
+      .card {
+        background: white;
+        border-radius: 12px;
+        padding: 1.2rem;
+        margin-bottom: 1.5rem;
+        box-shadow: var(--card-shadow);
+      }
+
+      .profile-info-item {
+        display: flex;
+        align-items: center;
+        padding: 0.8rem 0;
+        border-bottom: 1px solid #eee;
+      }
+
+      .profile-info-item:last-child {
+        border-bottom: none;
+      }
+
+      .profile-info-item i {
+        width: 30px;
+        color: var(--primary-color);
+        margin-right: 1rem;
+      }
+
+      .profile-actions {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .btn {
+        padding: 0.8rem 1.2rem;
+        border: none;
+        border-radius: 8px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all var(--transition-speed);
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        width: 100%;
+        justify-content: center;
+      }
+
+      .btn-primary {
+        background-color: var(--primary-color);
+        color: white;
+      }
+
+      .btn-primary:hover {
+        background-color: var(--secondary-color);
+      }
+
+      .btn-secondary {
+        background-color: #e9ecef;
+        color: var(--primary-color);
+      }
+
+      .btn-secondary:hover {
+        background-color: #dde2e6;
+      }
+
+      .farm-stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .stat-card {
+        background: white;
+        padding: 1rem;
+        border-radius: 12px;
+        text-align: center;
+        box-shadow: var(--card-shadow);
+      }
+
+      .stat-value {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: var(--primary-color);
+      }
+
+      @media (max-width: 768px) {
+        .nav-item {
+          font-size: 0.75rem;
+        }
+
+        .nav-item i {
+          font-size: 1.2rem;
+        }
+
+        .main-content {
+          padding: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>My Account</h1>
+    </div>
+
+    <div class="main-content">
+      <div class="profile-header">
+        <div class="profile-pic">
+          <i class="fas fa-user"></i>
+        </div>
+        <h2>Ashrafuzzaman Khalid</h2>
+        <p>Premium Member</p>
+      </div>
+
+      <div class="farm-stats">
+        <div class="stat-card">
+          <div class="stat-value">5</div>
+          <div>Active Crops</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">12</div>
+          <div>Orders</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">3</div>
+          <div>Fields</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Personal Information</h3>
+        <div class="profile-info-item">
+          <i class="fas fa-envelope"></i>
+          <div>
+            <div>Email</div>
+            <strong>asmkhalid101@gmail.com</strong>
+          </div>
+        </div>
+        <div class="profile-info-item">
+          <i class="fas fa-phone"></i>
+          <div>
+            <div>Phone</div>
+            <strong>01789684684</strong>
+          </div>
+        </div>
+        <div class="profile-info-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <div>
+            <div>Location</div>
+            <strong>Faridpur, Bangladesh</strong>
+          </div>
+        </div>
+        <div class="profile-actions">
+          <button class="btn btn-primary">
+            <i class="fas fa-edit"></i> Edit Profile
+          </button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Account Settings</h3>
+        <div class="profile-info-item">
+          <i class="fas fa-bell"></i>
+          <div>
+            <div>Notifications</div>
+            <strong>Enabled</strong>
+          </div>
+        </div>
+        <div class="profile-info-item">
+          <i class="fas fa-language"></i>
+          <div>
+            <div>Language</div>
+            <strong>English</strong>
+          </div>
+        </div>
+        <div class="profile-actions">
+          <button class="btn btn-secondary">
+            <i class="fas fa-cog"></i> Settings
+          </button>
+          <button class="btn btn-secondary">
+            <i class="fas fa-question-circle"></i> Help
+          </button>
+        </div>
+      </div>
+
+      <div class="profile-actions">
+        <button class="btn btn-primary">
+          <i class="fas fa-file-alt"></i> My Reports
+        </button>
+        <button class="btn btn-secondary">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+      </div>
+    </div>
+
+    <nav class="nav-bar">
+      <a href="./homepage.html" class="nav-item">
+        <i class="fas fa-home"></i>
+        Home
+      </a>
+      <a href="./marketpage.html" class="nav-item">
+        <i class="fas fa-store"></i>
+        Market
+      </a>
+      <a href="./crops.html" class="nav-item">
+        <i class="fas fa-seedling"></i>
+        Crops
+      </a>
+      <a href="./training.html" class="nav-item">
+        <i class="fas fa-book"></i>
+        Learn
+      </a>
+      <a href="./profile.html" class="nav-item active">
+        <i class="fas fa-user"></i>
+        Profile
+      </a>
+    </nav>
+  </body>
+</html>
